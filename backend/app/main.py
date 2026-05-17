@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import Base, engine
 from app.models.document import Document
+from app.routers.documents import router as document_router
 
 
 app = FastAPI(
@@ -32,6 +33,9 @@ async def startup():
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+
+
+app.include_router(document_router)
 
 
 @app.get("/")
