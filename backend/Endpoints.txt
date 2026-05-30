@@ -1,0 +1,43 @@
+
+
+DocuLens API Endpoints
+======================
+
+Base URL
+http://127.0.0.1:8000
+
+1. Health Check
+GET http://127.0.0.1:8000/
+Purpose: Check if API is running.
+
+2. Upload Document
+POST http://127.0.0.1:8000/documents/upload
+Body: form-data
+Field: file (File)
+Purpose: Upload a document, extract text, detect language, store in SQLite and ChromaDB.
+
+3. Get All Documents
+GET http://127.0.0.1:8000/documents/
+Purpose: Return all uploaded documents.
+
+4. Semantic Search
+POST http://127.0.0.1:8000/query/
+Header: Content-Type: application/json
+Example Body:
+{
+  "question": "What is this document about?"
+}
+Purpose: Search documents using ChromaDB and return relevant text.
+
+Planned Endpoints
+-----------------
+GET http://127.0.0.1:8000/documents/{id}
+GET http://127.0.0.1:8000/documents/{id}/download
+DELETE http://127.0.0.1:8000/documents/{id}
+POST http://127.0.0.1:8000/query/ask
+
+Swagger UI
+http://127.0.0.1:8000/docs
+
+OpenAPI JSON
+http://127.0.0.1:8000/openapi.json

@@ -7,6 +7,7 @@ from app.config import settings
 from app.database import Base, engine
 from app.models.document import Document
 from app.routers.documents import router as document_router
+from app.routers.query import router as query_router
 
 
 app = FastAPI(
@@ -36,6 +37,7 @@ async def startup():
 
 
 app.include_router(document_router)
+app.include_router(query_router)
 
 
 @app.get("/")
